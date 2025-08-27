@@ -1,0 +1,107 @@
+<?php $__env->startSection('title', 'Login'); ?>
+
+<?php $__env->startSection('content'); ?>
+<!-- wrapper -->
+	<div class="wrapper d-flex items-center justify-center min-h-screen">
+		<div class="section-authentication-login d-flex align-items-center justify-content-center py-3">
+			<div class="row mt-5">
+				<div class="col-12 col-lg-10 mx-auto">
+					<div class="card radius-15 rounded-lg shadow-lg">
+						<div class="row no-gutters">
+							<div class="col-lg-6">
+								<img src="<?php echo e(asset('images/logo-img.jpg')); ?>" class="card-img h-100" alt="...">
+							</div>
+							<div class="col-lg-6">
+								<div class="card-body p-md-5">
+									<div class="text-center"> 
+										<h2 class="mt-4 font-weight-bold">Welcome to <?php echo e(config('app.name')); ?></h2> 
+                    					<p class="mb-8 text-gray-800">Book vet appointments seamlessly, manage your pets, and stay on top of care schedules.</p>
+										<hr/>
+									</div>
+									<div class="login-separater text-center"> <span>LOGIN WITH YOUR CREDENTIALS</span>
+										<hr/>
+									</div>
+									<?php if($errors->any()): ?>
+										<p class="text-center"><strong style="text-transform: uppercase;color:red" >Invalid credentials. Please check your entry.</strong></p>
+									<?php endif; ?>
+									<form method="POST" action="<?php echo e(route('login')); ?>">
+										<?php echo csrf_field(); ?>
+                                        <!-- Email -->
+										                      <div class="form-group mt-4">
+                                            <label for="email" class="form-label fw-bold">Email address</label>
+                                            <input type="email" id="email" name="email" class="form-control <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('email')); ?>" required autofocus>
+                                            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> 
+                                                <div class="invalid-feedback"><?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+										                      </div>
+
+                                        <!-- Password -->
+										                    <div class="form-group">
+                                            <label for="password" class="form-label fw-bold">Password</label> 
+                                            <input type="password" id="password" name="password" class="form-control <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" autocomplete="current-password" required>
+                                            <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="invalid-feedback"><?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+										                    </div>
+
+                                        <!-- Remember Me -->
+										                    <div class="form-row">
+                                            <div class="form-group col">
+                                                <div class="mb-3 form-check">
+                                                    <input type="checkbox" class="form-check-input" id="remember" name="remember" <?php echo e(old('remember') ? 'checked' : ''); ?> checked>
+                                                    <label class="form-check-label" for="remember">Remember Me</label>
+                                                </div>
+                                            </div>
+										                      </div>
+
+                                        <div class="btn-group d-grid mt-3">
+                                            <button type="submit" class="btn btn-primary btn-block text-white btn-lg btn:hover:btn-info">
+                                                Log In <i class="lni lni-enter"></i>
+                                            </button>
+                                        </div>
+									  </form>
+								</div>
+                                <!-- Footer -->
+                                <div class="card-footer text-muted text-center small">
+                                    Only authorized users may log in. Contact your administrator for access.
+                                </div>
+							</div>
+						</div>
+						<!--end row-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end wrapper -->
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\vet-booking\resources\views/welcome.blade.php ENDPATH**/ ?>
