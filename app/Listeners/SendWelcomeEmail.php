@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Listeners;
+
+use App\Events\UserCreated;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendWelcomeEmail
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // …
+        event(new UserCreated($user));
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  \App\Events\UserCreated  $event
+     * @return void
+     */
+    public function handle(UserCreated $event)
+    {
+        //
+    }
+}
